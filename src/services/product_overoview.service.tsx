@@ -1,5 +1,5 @@
 async function getOneProduct(id: string) {
-  const response = await fetch(`http://localhost:3000/product/${id}`);
+  const response = await fetch(`${process.env.API_BASE_URL}/v1/product/${id}`);
   if (response.status == 200) {
     const product = await response.json();
     return product;
@@ -8,14 +8,4 @@ async function getOneProduct(id: string) {
   }
 }
 
-async function getAllProduct(id: string) {
-  const response = await fetch(`http://localhost:3000/product/`);
-  if (response.status == 200) {
-    const products = await response.json();
-    return products;
-  } else {
-    throw new Error(response.statusText);
-  }
-}
-
-export default { getOneProduct, getAllProduct };
+export default { getOneProduct };
