@@ -9,12 +9,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       // Get data from api
       try {
         const response = await axios.get(
-          // `${process.env.API_BASE_URL}/v1/product/`
-          `https://174.138.127.145/v1/product/`
+          `${process.env.API_BASE_URL}/v1/product/`
         );
         res.status(200).json(response.data);
       } catch (error: any) {
-        console.log(error.response.status);
+        console.log(error);
         // handle different error status
         if (error.code === "not_found") {
           res.status(404).json({ error: "Not found" });
