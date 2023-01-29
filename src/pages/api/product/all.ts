@@ -1,5 +1,6 @@
 import axios from "axios";
 import { NextApiRequest, NextApiResponse } from "next";
+import { headers } from "../../../utils/headers";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
@@ -10,7 +11,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         const response = await axios.get(
           `${process.env.API_BASE_URL}/v1/product/all`,
-          { headers: { apikey: `${process.env.API_KEY}` } }
+          { headers: headers }
         );
         res.status(200).json(response.data);
       } catch (error: any) {
