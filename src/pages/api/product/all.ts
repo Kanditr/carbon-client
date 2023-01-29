@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       // Get data from api
       try {
         const response = await axios.get(
-          `${process.env.API_BASE_URL}/v1/product/`
+          `${process.env.API_BASE_URL}/v1/product/all`
         );
         res.status(200).json(response.data);
       } catch (error: any) {
