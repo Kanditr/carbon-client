@@ -14,9 +14,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           { headers: headers }
         );
         res.status(200).json(response.data);
+
+        // Error mapping
       } catch (error: any) {
-        console.log(error);
-        // handle different error status
         if (error.code === "not_found") {
           res.status(404).json({ error: "Not found" });
         } else if (error.code === "unauthorized") {
